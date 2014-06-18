@@ -1,8 +1,8 @@
-###################################################
-### Battleship text game.                       ###
-### Exercise from Codecademy Python track.      ###
-### http://www.codecademy.com/en/tracks/python  ###
-###################################################
+####################################################
+### Battleship text game.                        ###
+### Exercise from Codecademy Python track.       ###
+### http://www.codecademy.com/en/tracks/python   ###
+####################################################
 
 from random import randint
 
