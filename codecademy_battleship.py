@@ -25,6 +25,10 @@ def print_board(board):
     for row in board:
         print " ".join(row)
 
+def update_board(board):
+    board[guess_row][guess_col] = "X"          
+    print_board(board)
+
 print_board(board)
 
 # Generates the random location of the ship
@@ -33,6 +37,7 @@ def random_row(board):
 
 def random_col(board):
     return randint(0, len(board[0]) - 1)
+
 
 ship_row = random_row(board)
 ship_col = random_col(board)
@@ -59,9 +64,6 @@ for i in range(turns_allowed):
         except:
             print "Please enter an positive number"
 
-    print ship_row
-    print ship_col
-
     # checks the user guess after each turn
     if ship_row == guess_row and ship_col == guess_col:
         print "Congratulations! You sank the battleship!\n"
@@ -71,13 +73,23 @@ for i in range(turns_allowed):
             print "Oops, that's not even in the ocean.\n"
             if turn == turns_allowed:
                 print "Game Over!"
+        elif abs((guess_row + 1) - (ship_row + 1)) == 1 or abs((guess_col + 1) - (ship_col + 1)) == 1:
+            print "You were close!\n"
+            update_board(board)
+            if turn == turns_allowed:
+                print "Game Over!"
+        elif abs((guess_row + 1) - (ship_row + 1)) == 0 or abs((guess_col + 1) - (ship_col + 1)) == 0:
+            print "You were VERY close!\n"
+            update_board(board)
+            if turn == turns_allowed:
+                print "Game Over!"
         elif board[guess_row][guess_col] == "X":
             print "You tried that location before!.\n"
             if turn == turns_allowed:
                 print "Game Over!"
         else: 
             print "You missed the battleship!\n"
-            board[guess_row][guess_col] = "X"          
-            print_board(board)
+            update_board(board)
             if turn == turns_allowed:
+                print "\n"
                 print "Game Over!\n" * board_size
