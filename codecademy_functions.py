@@ -4,6 +4,38 @@
 ### http://www.codecademy.com/en/tracks/python   ###
 ####################################################
 
+""" Function that takes two strings, text and word, as input and returns the text with 
+the word you chose replaced with asterisks. """
+
+def censor(text, word):
+    text_list = text.split()
+    ast_len = len(word)
+    i = 0
+    for wordlst in text_list:
+        if text_list[i] == word:
+            text_list[i] = ast_len * "*"
+        i = i + 1
+    censored_txt = " ".join(text_list)
+    return censored_txt
+        
+
+""" Function that takes a string word and returns the equivalent scrabble score for that word. """
+
+score = {"a": 1, "c": 3, "b": 3, "e": 1, "d": 2, "g": 2, 
+         "f": 4, "i": 1, "h": 4, "k": 5, "j": 8, "m": 3, 
+         "l": 1, "o": 1, "n": 1, "q": 10, "p": 3, "s": 1, 
+         "r": 1, "u": 1, "t": 1, "w": 4, "v": 4, "y": 4, 
+         "x": 8, "z": 10}
+         
+def scrabble_score(word):
+    word_low = word.lower()
+    points = 0
+    for char in word_low:
+        if char in score:
+            points = points + score[char]
+    return points
+
+
 """ Function that sums the the digits of an inputed number """
 
 def digit_sum(n):
