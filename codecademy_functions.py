@@ -84,3 +84,57 @@ def is_prime(x):
                 return False
                 break
         return True
+
+""" Function that returns the number of times the item occurs in the list. """
+
+def count(sequence, item):
+    i = 0
+    count = 0
+    for element in sequence:
+        if sequence[i] == item:
+            count = count + 1
+        i = i + 1
+    return count
+
+""" Function that takes in a list of numbers, removes all odd numbers in the list, and returns the result. """
+
+def purify(numlist):
+    i = 0
+    new_list = []
+    for item in numlist:
+        if numlist[i] % 2 == 0:
+            new_list.append(numlist[i]) 
+        i = i + 1
+    return new_list
+
+""" Function that takes a list of integers as input and returns multiplication of all of the elements in the list. """ 
+
+def product(numlist):
+    total = 1
+    i = 0
+    for num in numlist:
+        total = total * numlist[i]
+        i = i + 1
+    return total
+
+""" Function that takes in a list and removes elements of the list that are the same."""
+
+def remove_duplicates(numlist):
+    unique_nums = []
+    i = 0
+    for num in numlist:
+        if numlist[i] not in unique_nums:
+            unique_nums.append(numlist[i])
+        i = i + 1
+    return unique_nums
+
+""" Function that takes a list as an input and returns the median value of the list. """
+
+def median(numlist):
+    median = 0
+    sortlist = sorted(numlist)
+    if len(numlist) % 2 != 0:
+        median = sortlist[int(len(sortlist)/2)]
+    else:
+        median = float((sortlist[(len(sortlist)/2)] + sortlist[(len(sortlist)/2) - 1]) / 2.0)
+    return median
